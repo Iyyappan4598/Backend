@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
-const {v4}=require('uuid')
+const { v4 } = require('uuid')
 const registerSchema = new mongoose.Schema({
   _id: {
     type: String,
-    default:v4
+    default: v4
+  },
+  Doctor: {
+    type: String
   },
   Name: {
     type: String,
@@ -11,15 +14,18 @@ const registerSchema = new mongoose.Schema({
   mobile: {
     type: Number,
   },
-  department:{
+  department: {
     type: String,
   },
-  sallery:{
+  sallery: {
     type: Number,
   },
-  active:{
-    type:Boolean,
-    default:true,
+  location:{
+    type: String,
+  },
+  active: {
+    type: Boolean,
+    default: true,
   }
 });
 const register = mongoose.model("Doctor", registerSchema);
