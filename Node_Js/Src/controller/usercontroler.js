@@ -60,29 +60,29 @@ const editDoctordata = async (req,res)=>{
 
 //Modify or Update Data for Nurse
 const editNursedata = async (req,res)=>{
-    const edit = await userServices.updateDoctor(req.params.id,req.body);
+    const edit = await userServices.updateNurse(req.params.id,req.body);
     res.send(edit)
 }
 
 //Modify or Update Data for Patient
 const editPatientdata = async (req,res)=>{
-    const edit = await userServices.updateDoctor(req.params.id,req.body);
+    const edit = await userServices.updatePatient(req.params.id,req.body);
     res.send(edit)
 }
 
 //delete Doctor data
 const deleteDoctordata = async(req,res)=>{
-    const delData = userServices.deleteData(req.params.id);
+    const delData = userServices.deleteDoctorDetail(req.params.id);
     res.send(delData)
 }
 //delete Nurse data
 const deleteNursedata = async(req,res)=>{
-    const delData = userServices.deleteData(req.params.id);
+    const delData = userServices.deleteNurseDetail(req.params.id);
     res.send(delData)
 }
 //delete Patient data
 const deletePatientdata = async(req,res)=>{
-    const delData = userServices.deleteData(req.params.id);
+    const delData = userServices.deletePatientDetail(req.params.id);
     res.send(delData)
 }
 

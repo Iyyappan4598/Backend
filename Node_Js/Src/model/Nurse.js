@@ -5,7 +5,7 @@ const registerSchema = new mongoose.Schema({
         type: String,
         default: v4
     },
-    Doctor: {
+    DoctorID: {
         type: String
     },
     EmpId: {

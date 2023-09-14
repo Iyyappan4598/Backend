@@ -5,9 +5,6 @@ const registerSchema = new mongoose.Schema({
     type: String,
     default: v4
   },
-  Doctor: {
-    type: String
-  },
   Name: {
     type: String,
   },

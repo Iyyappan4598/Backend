@@ -5,7 +5,7 @@ const registerSchema = new mongoose.Schema({
         type: String,
         default: v4
     },
-    Nurse: {
+    NurseID: {
         type: String
     },
     PatientNum: {
@@ -13,6 +13,9 @@ const registerSchema = new mongoose.Schema({
     },
     Name: {
         type: String,
+    },
+    age:{
+        type: Number,
     },
     Disease: {
         type: String,

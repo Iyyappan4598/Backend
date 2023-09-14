@@ -9,7 +9,7 @@ router.post('/doctor/user', userControler.createdoctorData)
 router.get('/get/doctor/data',userControler.getdoctorData)
 router.get('/get/specific/doctor/data/:id',userControler.getSpecificdoctorData)
 router.put('/put/edit/Doctor/:id',userControler.editDoctordata)
-router.put('/delete/Doctor/data/:id',userControler.deleteDoctordata)
+router.delete('/delete/Doctor/data/:id',userControler.deleteDoctordata)
 
 //Nurse post, get, put, delete
 router.post('/nurse/user', userControler.createNurseData)
