@@ -86,6 +86,18 @@ const deletePatientdata = async(req,res)=>{
     res.send(delData)
 }
 
+//get Doctor with Nurse
+const doctorWithNurse = async(req,res)=>{
+    const data = await userServices.doctorwithNurse(req.params.id)
+    res.send(data)
+}
+
+//doctor with page (Pagination)
+const doctorwithPage = async(req,res)=>{
+    const page = await userServices.doctorwithPage(req.params.page)
+    res.send(page)
+}
+
     module.exports = {
         createdoctorData,
         createNurseData,
@@ -101,5 +113,7 @@ const deletePatientdata = async(req,res)=>{
         editPatientdata,
         deleteDoctordata,
         deleteNursedata,
-        deletePatientdata
+        deletePatientdata,
+        doctorWithNurse,
+        doctorwithPage
     }

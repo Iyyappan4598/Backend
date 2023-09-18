@@ -4,12 +4,14 @@ const router = express.Router();
 
 const userControler=require('../controller/usercontroler')
 
-//Doctor post, get, put, delete
+//Doctor post, get, put, delete, pagination(page)
 router.post('/doctor/user', userControler.createdoctorData)
 router.get('/get/doctor/data',userControler.getdoctorData)
 router.get('/get/specific/doctor/data/:id',userControler.getSpecificdoctorData)
 router.put('/put/edit/Doctor/:id',userControler.editDoctordata)
 router.delete('/delete/Doctor/data/:id',userControler.deleteDoctordata)
+router.get('/get/doctorAndNurse/:id',userControler.doctorWithNurse)//Doctor with Nurse
+router.get('/get/doctor/:page',userControler.doctorwithPage)//Doctor with Pagination
 
 //Nurse post, get, put, delete
 router.post('/nurse/user', userControler.createNurseData)

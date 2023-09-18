@@ -34,19 +34,19 @@ const getDoctorDetails = async()=>{
 
 //Get Nurse Full Details
 const getNurseDetails = async()=>{
-    const nursedetails = await NurseModel.aggregate([
+    const details = await NurseModel.aggregate([
         {
             $match:{
                 $and:[{active:{$eq:true}}]
             }
         }
     ]);
-    return nursedetails;
+    return details;
 }
 
 //Get Patient Full Details
 const getPatientDetails = async()=>{
-    const patientdetails = await NurseModel.aggregate([
+    const patientdetails = await PatientModel.aggregate([
         {
             $match:{
                 $and:[{active:{$eq:true}}]
@@ -158,6 +158,53 @@ const deletePatientDetail = async(id)=>{
     return datas;
 }
 
+//Get Doctor with Nurse using(Lookup)
+const doctorwithNurse = async()=>{
+    const data = await DoctorModel.aggregate([
+        {
+            $match:{
+                $and:[{active:{$eq:true}}]
+            }
+        },
+        {
+            $lookup:{
+                from: "nurses",
+                localField: "_id",
+                foreignField: "DoctorID",
+                as: "NurseData"
+            }
+        },
+        {$unwind: "$NurseData"},
+        {
+            $project:{
+                Name:1,
+                department:1,
+                mobile:1,
+                sallery:1,
+                location:1,
+                nurseEmpId:"$NurseData.EmpId",
+                nurseName: "$NurseData.Name",
+                job:"$NurseData.Jobrole"
+            }
+        }
+    ]);
+    return data;
+}
+
+//doctor with page(Pagination)
+const doctorwithPage = async(page)=>{
+const detail = await DoctorModel.aggregate([
+    {
+        $match:{
+            $and:[{active:{$eq:true}}]
+        }
+    },
+    {$skip: 3 * page},
+    {$limit: 3},
+]);
+return detail;
+}
+
 module.exports={
     doctorData,
     NurseData,
@@ -173,6 +220,8 @@ module.exports={
     updatePatient,
     deleteDoctorDetail,
     deleteNurseDetail,
-    deletePatientDetail
+    deletePatientDetail,
+    doctorwithNurse,
+    doctorwithPage
 
 }
