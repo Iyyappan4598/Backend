@@ -175,18 +175,18 @@ const doctorwithNurse = async(id)=>{
             }
         },
         // {$unwind: "$NurseData"},
-        {
-            $project:{
-                Name:1,
-                department:1,
-                mobile:1,
-                sallery:1,
-                location:1,
-                nurseEmpId:"$NurseData.EmpId",
-                nurseName: "$NurseData.Name",
-                job:"$NurseData.Jobrole"
-            }
-        }
+        // {
+        //     $project:{
+        //         Name:1,
+        //         department:1,
+        //         mobile:1,
+        //         sallery:1,
+        //         location:1,
+        //         nurseEmpId:"$NurseData.EmpId",
+        //         nurseName: "$NurseData.Name",
+        //         job:"$NurseData.Jobrole"
+        //     }
+        // }
     ]);
     return data;
 }
