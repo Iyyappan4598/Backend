@@ -159,11 +159,11 @@ const deletePatientDetail = async(id)=>{
 }
 
 //Get Doctor with Nurse using(Lookup)
-const doctorwithNurse = async()=>{
+const doctorwithNurse = async(id)=>{
     const data = await DoctorModel.aggregate([
         {
             $match:{
-                $and:[{active:{$eq:true}}]
+                $and:[{_id:id},{active:{$eq:true}}]
             }
         },
         {
@@ -174,7 +174,7 @@ const doctorwithNurse = async()=>{
                 as: "NurseData"
             }
         },
-        {$unwind: "$NurseData"},
+        // {$unwind: "$NurseData"},
         {
             $project:{
                 Name:1,
