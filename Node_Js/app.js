@@ -9,9 +9,10 @@ const database = require("./Src/config/database");
 const routerfile = require("./Src/router/userrouter");
 const bodyParser = require('body-parser');
 const router = require("./Src/router/userrouter");
+const cors = require("cors")
 const app = express();
 
-
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     limit:"50mb",
