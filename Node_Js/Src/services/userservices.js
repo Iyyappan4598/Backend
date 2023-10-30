@@ -1,6 +1,7 @@
 const DoctorModel = require('../model/doctor')
 const NurseModel = require('../model/Nurse')
 const PatientModel = require('../model/patient')
+const signupRegisterModel = require('../model/signupRegister')
 
 //Create Doctor Data
 const doctorData = async(body)=>{
@@ -205,6 +206,17 @@ const detail = await DoctorModel.aggregate([
 return detail;
 }
 
+//Login
+const Userlogin = async(Email,password)=>{
+    const checkUser = await signupRegisterModel.findOne({Email:Email});
+    const checkPass = await signupRegisterModel.findOne({password:password});
+    if(!checkUser || !checkPass){
+        console.log("Incorrect username or password")
+    }else{
+        console.log("Login successfully")
+    }
+}
+
 module.exports={
     doctorData,
     NurseData,
@@ -222,6 +234,7 @@ module.exports={
     deleteNurseDetail,
     deletePatientDetail,
     doctorwithNurse,
-    doctorwithPage
+    doctorwithPage,
+    Userlogin
 
 }

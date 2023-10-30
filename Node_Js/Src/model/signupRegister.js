@@ -5,22 +5,19 @@ const registerSchema = new mongoose.Schema({
         type: String,
         default: v4
     },
-    DoctorID: {
-        type: String
-    },
-    EmpId: {
+    FirstName: {
         type: String,
     },
-    Name: {
+    LastName: {
         type: String,
     },
-    mobile: {
+    Age: {
         type: Number,
     },
-    salary: {
-        type: Number,
+    Email: {
+        type: String,
     },
-    location: {
+    password: {
         type: String,
     },
     active: {
@@ -29,5 +26,5 @@ const registerSchema = new mongoose.Schema({
     }
 });
 
-const register = mongoose.model("Nurse", registerSchema);
+const register = mongoose.model("signupRegister", registerSchema);
 module.exports = register;
