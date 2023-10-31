@@ -98,11 +98,18 @@ const doctorwithPage = async(req,res)=>{
     res.send(page)
 }
 
-//Login
+//Create login
+
+const userAdmin = async (req, res) => {
+    const valueData = await userServices.createAdminData(req.body);
+    res.send(valueData)
+ }
+
+//Check Login
 const loginUser = async (req, res) => {
-    const {Email,password} = req.body;
-    const Data = await userServices.Userlogin(Email,password);
-    res.send(Data)
+const {Email,password} = req.body;
+const Data = await userServices.Userlogin(Email,password);
+res.send(Data)
 }
 
     module.exports = {
@@ -123,5 +130,6 @@ const loginUser = async (req, res) => {
         deletePatientdata,
         doctorWithNurse,
         doctorwithPage,
+        userAdmin,
         loginUser
     }

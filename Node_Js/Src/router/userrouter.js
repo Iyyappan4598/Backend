@@ -28,6 +28,7 @@ router.put('/put/edit/Patient/:id',userControler.editPatientdata)
 router.delete('/delete/Patient/data/:id',userControler.deletePatientdata)
 
 //Create and Store UserName, password in MongoDB
+router.post('/User/Admin', userControler.userAdmin)
 router.post('/Admin/login', userControler.loginUser);
 
 module.exports=router;

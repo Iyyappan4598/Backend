@@ -206,15 +206,22 @@ const detail = await DoctorModel.aggregate([
 return detail;
 }
 
-//Login
+//Create admin login
+const createAdminData = async(body)=>{
+    const datas = await signupRegisterModel.create(body);
+    return datas;       
+}
+
+
+//Check Login
 const Userlogin = async(Email,password)=>{
-    const checkUser = await signupRegisterModel.findOne({Email:Email});
-    const checkPass = await signupRegisterModel.findOne({password:password});
-    if(!checkUser || !checkPass){
-        console.log("Incorrect username or password")
-    }else{
-        console.log("Login successfully")
-    }
+const checkUser = await signupRegisterModel.findOne({Email:Email});
+const checkPass = await signupRegisterModel.findOne({password:password});
+if(!checkUser || !checkPass){
+    console.log("Incorrect username or password")
+}else{
+    console.log("Login successfully")
+}
 }
 
 module.exports={
@@ -235,6 +242,7 @@ module.exports={
     deletePatientDetail,
     doctorwithNurse,
     doctorwithPage,
+    createAdminData,
     Userlogin
 
 }

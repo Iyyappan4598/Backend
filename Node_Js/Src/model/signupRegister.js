@@ -5,10 +5,7 @@ const registerSchema = new mongoose.Schema({
         type: String,
         default: v4
     },
-    FirstName: {
-        type: String,
-    },
-    LastName: {
+    Name: {
         type: String,
     },
     Age: {
