@@ -1,4 +1,7 @@
 const userServices = require('../services/userservices')
+const signupRegisterModel = require("../model/signupRegister");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
 //Create Doctor Data
 const createdoctorData = async (req, res) => {
@@ -108,8 +111,26 @@ const userAdmin = async (req, res) => {
 //Check Login
 const loginUser = async (req, res) => {
 const {Email,password} = req.body;
-const Data = await userServices.Userlogin(Email,password);
-res.send(Data)
+
+// const Data = await userServices.Userlogin(Email,password);
+// res.send(Data)
+
+const checkUser = await signupRegisterModel.findOne({ Email: Email }); //1st Email is DB, 2nd Email is Fieldname
+    const checkPass = await signupRegisterModel.findOne({ password: password }); //1st password is DB, 2nd password is Fieldname
+    if (!checkUser || !checkPass) {
+    //   console.log("Incorrect username or password");
+    res.send({error:"Incorrect username or password"})
+    } else {
+      const payload = {
+        Email: Email,
+        password: password,
+      };
+      const security = crypto.randomBytes(32).toString("hex");
+      const create_jwt = jwt.sign(payload, security, { expiresIn: "24hrs" });
+      console.log(create_jwt, "create_jwt");
+      res.send({message:create_jwt}) ;
+    }
+
 }
 
     module.exports = {

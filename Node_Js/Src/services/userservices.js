@@ -229,14 +229,7 @@ const Userlogin = async (Email, password) => {
     console.log("Incorrect username or password");
   } else {
     // console.log("Login successfully")
-    const payload = {
-      Email: Email,
-      password: password,
-    };
-    const security = crypto.randomBytes(32).toString("hex");
-    const create_jwt = jwt.sign(payload, security, { expiresIn: "24hrs" });
-    console.log(create_jwt, "create_jwt");
-    return create_jwt;
+  
   }
 };
 
